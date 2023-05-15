@@ -1,0 +1,11 @@
+# Ignore files that get generated from typesetting tex
+*.pdf
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.aux
+*.synctex.gz
+*.DS_Store
