@@ -1,0 +1,313 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% CV Template for SPP 2458 "Combinatorial Synergies" %%%%%%
+%%%%% Prepared by Galen Dorpalen-Barry, Thomas Kahle, and  %%%%%
+%%%%%%%%%%%%%%%%% Laura Voggesberger %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{eurosym}
+% \usepackage{revnum}
+\usepackage{xcolor}
+\definecolor{darkblue}{RGB}{0,0,160}
+\usepackage{hyperref}
+\hypersetup{
+%    bookmarks=false,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat\u2019s bookmarks
+    pdftoolbar=true,        % show Acrobat\u2019s toolbar?
+    pdfmenubar=true,        % show Acrobat\u2019s menu?
+    pdffitwindow=false,      % page fit to window when opened
+    pdfnewwindow=true,      % links in new window
+    pdfkeywords={}, % list of keywords
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=darkblue,          % color of internal links
+    citecolor=darkblue,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=darkblue    
+}
+\usepackage{helvet}  %% DFG wünscht sich eigentlich Arial
+\usepackage{url}
+\usepackage[ngerman]{babel}
+\usepackage{tabularx}
+
+% Bibliography
+\usepackage[
+defernumbers=true,
+firstinits=true,
+maxnames=6,
+sorting=ydnt,  % Nach Jahr absteigend, dann Name und Titel
+doi=false,
+url=false,
+isbn=false,
+]{biblatex}
+\addbibresource{../bib/alle.bib}
+\renewbibmacro{in:}{}
+% Remove strange things from bibtex entries
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+ \clearlist{address}
+ \clearfield{date}
+ \clearfield{eprint}
+% \clearfield{isbn}
+% \clearfield{issn}
+ \clearlist{location}
+ \clearfield{month}
+% \clearfield{series}
+ \clearlist{language}
+ \clearname{editor}
+ \clearfield{pages}
+ \clearfield{number}
+ \clearfield{volume}
+
+ \ifentrytype{book}{}{% Remove publisher and editor except for books
+  \clearlist{publisher}
+ }
+}
+% If there is a DOI, don't print a URL.
+% We use source mappings for this
+% Modified from here: https://tex.stackexchange.com/questions/154864/biblatex-use-doi-only-if-there-is-no-url
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=doi,final]
+      \step[fieldset=url,null]
+    }
+  }
+}
+
+% Make the title a clickable link to the DOI, URL, or ISBN.
+\newbibmacro{string+doiurlisbn}[1]{%
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{%
+      \iffieldundef{isbn}{%
+        \iffieldundef{issn}{%
+          #1%
+        }{%
+          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+        }%
+      }{%
+        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+      }%
+    }{%
+      \href{\thefield{url}}{#1}%
+    }%
+  }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+  }%
+}
+
+% Italic titles plain
+% \DeclareFieldFormat
+%   [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+%   {title}{\textit{#1}\isdot}
+% Titles in italic (clickable)
+\DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article,incollection,inproceedings,thesis,phdthesis]{title}%
+{\usebibmacro{string+doiurlisbn}{#1}}
+
+\renewbibmacro*{volume+number+eid}{%
+  \bfseries
+  \printfield{volume}%
+  \mdseries
+%  \setunit*{\adddot}% DELETED
+  \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+% Deacrease space between references in bibliography;
+\newcommand{\myrefsep}{.1ex}
+\setlength\bibitemsep{\myrefsep}
+\setlength\bibnamesep{\myrefsep}
+\setlength\bibinitsep{\myrefsep}
+
+%% Kein "und" vor dem letzten Autor*in
+\renewcommand{\finalnamedelim}{\addcomma\space}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[
+text={460pt,640pt},
+headheight=18pt,
+centering
+]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}		     % Keine Fusszeile
+\lhead{{\noindent\myname}}   % Name links
+\rhead{{\large Curriculum Vitae \quad\thepage}}% "CV und Seitenzahl rechts
+
+% Zwischenüberschriften
+\usepackage[big,compact]{titlesec}	%Erstmal kompakte Standards
+\newcommand{\periodafter}[1]{#1.}
+\titleformat{\section}
+{\large\bfseries}{\thesection}{.5em}{\underline}
+\titlespacing{\section}{0pt}{5pt}{5pt}
+\titlespacing{\subsection}{0pt}{5pt}{0pt}
+
+\setlength{\parindent}{0pt}
+
+% Allgemeine Daten hier rein:
+\def\mytitle{Prof.\ Dr.\ }
+\def\myname{MY NAME}
+\def\myinstitute{\begin{minipage}[t]{8cm}
+    MY UNIVERSITY\\
+    Fakultät für Mathematik\\
+    MY ADDRESS
+    \end{minipage}\vspace{.3ex}}
+\def\myphonenr{PHONE}
+\def\myemail{MY EMAIL}
+\def\myhomepage{\url{https://www.thomas-kahle.de}}
+\def\myORCID{\href{https://orcid.org/0000-0002-9271-8436}{ORCID ID}} % don't forget to change the url!
+\def\myidentifier{ORCID: \myORCID}
+\def\myposition{W2-Professor}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+\mbox{}
+\vspace{-9ex}
+
+\centerline{\Large \bf Curriculum Vitae \myname}
+
+\section*{Persönliche Daten}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}ll}
+  \textbf{Titel und Name} & \mytitle \myname \\
+  \textbf{Aktuelle Position} & \myposition \\
+  \textbf{Aktuelle Institution(en)} & \myinstitute \\
+  \textbf{Identifikatoren} & \myidentifier
+\end{tabularx}
+
+
+\section*{Qualifizierung und Werdegang}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}lX}
+  \textbf{Studium} & Fach, Zeitraum, Ort, Land \\
+  \textbf{Promotion} & Datum, Betreuer:innen, Fach, Einrichtung\\
+  \textbf{Stationen} & \emph{DFG: Für den Antrag relevante Tätigkeiten sind chronologisch (die aktuellste am Anfang) mit der Angabe von Zeitraum, Station/Position und Einrichtung zu nennen, wie z. B. Forschungsaufenthalte, Habilitation (Thema/Fach, Betreuende), Tätigkeiten an Hochschulen/außeruniversitären Einrichtungen, klinische Tätigkeit/Tätigkeit in der Versorgung von Patientinnen und Patienten, Erfahrungen und Qualifikationen in der Durchführung von klinischen Studien (Qualifikation als Prüferin, Prüfer oder Prüfungsteam-Mitglied sowie regulatorische und methodische Kenntnisse), Tätigkeit in der Industrieforschung, Tätigkeiten in anderen Berufsbranchen, Unternehmensgründungen, ehrenamtliche Tätigkeiten etc.}
+\end{tabularx}
+
+\section*{Ergänzende Angaben zum Werdegang}
+
+\emph{DFG: Hier können Sie freiwillig ergänzende Informationen zu
+  Ihrem Werdegang oder einer besonderen persönlichen Situation
+  eintragen, sollten Sie den Eindruck haben, dass diese Angaben für
+  die angemessene Begutachtung und Bewertung Ihrer wissenschaftlichen
+  Leistung relevant sein können. Als solche Besonderheiten oder
+  Verzögerungen können beispielsweise Ausfallzeiten aufgrund von
+  Kinderbetreuungsaufgaben, Mutterschutz-, Eltern- oder
+  Erziehungszeiten, chronischen/langfristigen Erkrankungen, einer
+  Behinderung oder besonderen familiären Verpflichtungen, wie der
+  Pflege von Angehörigen, sowie Pandemie-bedingten Ausfallzeiten
+  berücksichtigt werden. Es können auch zeitliche Verzögerungen im
+  wissenschaftlichen Werdegang, z. B. für Personen, die in erster
+  Generation eine akademische Karriere anstreben („first generation
+  academic“), aufgrund von verschiedenen Pflicht- und
+  Freiwilligendiensten, Spracherwerb, Migration oder
+  Integrationsphasen, Flucht oder Asylverfahren und Ähnliches genannt
+  werden. Bitte nennen Sie keine oder so wenige Daten wie möglich von
+  Dritten. }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Engagement im Wissenschaftssystem}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Freitext, optional
+\emph{Hier können Sie Angaben zu weiteren Tätigkeiten im
+  Wissenschaftssystem machen. Dazu zählen beispielsweise
+  Gremientätigkeiten, Tätigkeiten in der Selbstverwaltung der
+  Wissenschaft, die Organisation wissenschaftlicher Veranstaltungen,
+  Aktivitäten in der Lehre sowie Tätigkeiten als Mentorin
+  bzw. Mentor.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Betreuung von Forschenden in frühen Karrierephasen}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Freitext, optional.
+
+\section*{Wissenschaftliche Ergebnisse}
+
+\textbf{A: 10 ausgewählte Publikationen}
+
+\begin{thebibliography}{10}
+
+\bibitem{humphreys}
+James~E. Humphreys.
+\newblock {\em Reflection {G}roups and {C}oxeter {G}roups}, volume~29 of {\em
+  Cambridge Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, 1990.% 1,
+
+\end{thebibliography}
+
+\printbibliography[heading=none]
+
+\textbf{B: 10 sonstige Veröffentlichungen}
+
+\emph{DFG: optional, Freifeld, Preprints, Dinge ohne Peer Review, Patente, Blogposts, ...}
+
+\section*{Anerkennung durch das Wissenschaftssystem}
+
+\emph{DFG: Hier können Sie Angaben zu Auszeichnungen oder Preisen
+  machen. Dazu zählen auch Einladungen oder Berufungen in
+  herausgehobenen Gremien oder Akademien.  }
+
+\section*{Sonstige Angaben}
+
+\emph{Hier können Sie auf weitere Punkte zur Charakterisierung Ihrer Person als Wissenschaftlerin bzw. Wissenschaftler oder auf andere Aspekte, wie beispielsweise eine Dual-Career-Thematik (die z.  B. die Standortwahl bedingt), hinweisen, die aus Ihrer Sicht relevant für die Begutachtung oder Bewertung des Antrags sind.}
+
+\section*{Datenschutz und Einwilligung in die Verarbeitung optionaler Angaben}
+\footnotesize
+
+\noindent
+\textbf{Ich willige ausdrücklich in die Verarbeitung der freiwilligen
+(optionalen) Angaben, einschließlich „besonderer Kategorien
+personenbezogener Daten“ zum Zwecke der Prüfung und Entscheidung über
+meinen Antrag durch die DFG ein}. Dies beinhaltet auch die
+Weiterleitung meiner Daten an die am Entscheidungsprozess beteiligten
+externen Gutachtenden, Gremienmitglieder sowie ggf. ausländische
+Partnerorganisationen. Soweit diese Empfängerinnen und Empfänger ihren
+Sitz in einem Drittland (außerhalb des Europäischen Wirtschaftraums)
+haben, willige ich zusätzlich darin ein, dass diesen Zugriff auf meine
+Daten zu oben genannten Zwecken gewährt wird, obwohl unter Umständen
+kein mit dem EU-Recht vergleichbares Datenschutzniveau gewährleistet
+ist. Daher ist die Einhaltung der Datenschutz-Grundsätze des
+Unionsrechts nicht garantiert. Insoweit kann es zu einer Verletzung
+meiner Grundrechte und Grundfreiheiten und daraus resultierender
+Schäden kommen. Dadurch kann es mir erschwert sein, meine Rechte gemäß
+der Datenschutz-Grundverordnung (z. B. Auskunft, Berichtigung,
+Löschung, Schadensersatz) geltend zu machen und ggf. mit Hilfe von
+Behörden oder gerichtlich durchzusetzen.
+%
+Meine Einwilligung kann ich jederzeit ganz oder in Teilen – mit
+Wirkung für die Zukunft, frei und ohne Angabe von Gründen – gegenüber
+der DFG widerrufen (postmaster@dfg.de). Die Rechtmäßigkeit der bis
+dahin erfolgten Verarbeitung bleibt davon unberührt. Soweit ich in
+diesem CV „besondere Kategorien personenbezogener Daten“ Dritter
+übermittele, sichere ich zu, dass die insoweit erforderliche
+datenschutzrechtliche Legitimation besteht (z. B. durch eine
+Einwilligung).
+%
+Die Datenschutzhinweise zur Forschungsförderung der DFG, die ich unter
+\url{https://www.dfg.de/service/datenschutz} abrufen kann, habe ich
+zur Kenntnis genommen und leite diese an solche Personen weiter, deren
+Daten die DFG verarbeitet, weil sie in diesem CV aufgeführt sind.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
