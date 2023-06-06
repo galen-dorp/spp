@@ -1,27 +1,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%% Projektantrag Template for %%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%% SPP 2458 "Combinatorial Synergies" %%%%%%%%%%%%%%
-%%% Prepared by Galen Dorpalen-Barry and Laura Voggesberger %%%%
+%%%%%% CV Template for SPP 2458 "Combinatorial Synergies" %%%%%%
+%%%%% Prepared by Galen Dorpalen-Barry, Thomas Kahle, and  %%%%%
+%%%%%%%%%%%%%%%%% Laura Voggesberger %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper,11pt]{article} %LV: changed font size to 11pt, as the DFG says that it should be at least size 11pt
-
-% \renewcommand{\baselinestretch}{.85}
-\usepackage{helvet}  %LV: changed font, but note that the DFG would like to have Arial
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{eurosym}
+% \usepackage{revnum}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{helvet}  %% DFG wünscht sich eigentlich Arial
+\usepackage{tabularx}
+\usepackage{enumerate}
 \usepackage{multibib}
 \usepackage{bibentry}
-\newcites{all}{\vspace{-10pt}}
-\newcites{mine}{\vspace{-10pt}}
-
-\usepackage{a4wide}
-\usepackage[utf8]{inputenc}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage[small]{titlesec}
-\usepackage{enumerate}
-\usepackage{graphicx,xcolor}
-\usepackage{url}
-\usepackage{tabularx}
 
 \usepackage[
 text={460pt,640pt},
@@ -29,36 +25,41 @@ headheight=18pt,
 centering
 ]{geometry}
 
-\newcommand{\periodafter}[1]{#1.}
-\titleformat{\section}
-{\Large\bfseries}{\thesection}{1em}{}
-\titlespacing{\section}{0pt}{5pt}{5pt}
-\titlespacing{\subsection}{0pt}{5pt}{0pt}
-
-\setlength{\parindent}{0pt}
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \cfoot{}		     % Keine Fusszeile
 \lhead{{\noindent\myname}}   % Name links
 \rhead{{\large Curriculum Vitae \quad\thepage}}% "CV und Seitenzahl rechts
 
+% Zwischenüberschriften
+\usepackage[big,compact]{titlesec}	%Erstmal kompakte Standards
+\newcommand{\periodafter}[1]{#1.}
+\titleformat{\section}
+{\large\bfseries}{\thesection}{.5em}{\underline}
+\titlespacing{\section}{0pt}{5pt}{5pt}
+\titlespacing{\subsection}{0pt}{5pt}{0pt}
+
+\setlength{\parindent}{0pt}
+
 % Allgemeine Daten hier rein:
 \def\mytitle{Prof.\ Dr.\ }
 \def\myname{MY NAME}
 \def\myinstitute{\begin{minipage}[t]{8cm}
-MY UNIVERSITY\\
-Fakultät für Mathematik\\
-MY ADDRESS
-\end{minipage}\vspace{.3ex}}
+    MY UNIVERSITY\\
+    Fakultät für Mathematik\\
+    MY ADDRESS
+    \end{minipage}\vspace{.3ex}}
 \def\myphonenr{PHONE}
 \def\myemail{MY EMAIL}
-\def\myhomepage{https://www.combinatorial-synergies.de}
-\def\myORCID{0001-0001-0002-0005} % don't forget to change the url!
+\def\myhomepage{\href{https://www.thomas-kahle.de}{https://www.thomas-kahle.de}}
+\def\myORCID{\href{https://orcid.org/0000-0002-9271-8436}{ORCID ID}} % don't forget to change the url!
 \def\myidentifier{ORCID: \myORCID}
 \def\myposition{W0-Professor}
 
-\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \nobibliography{bibliography}
 \bibliographystyle{unsrt}
@@ -75,15 +76,14 @@ The CV must not exceed four pages. Please make sure to retain the template forma
 name the document CV\_PubList\_$\langle$ person’s last name$\rangle$.
 The text in grey or red font provides you with information when preparing your CV. Please remove these texts completely after filling in the CV.
 Additional information is available under \url{www.dfg.de/faq_cv}.}
-
 \section*{Persönliche Daten}
 
 \noindent
 \begin{tabularx}{\textwidth}{@{}ll}
-\textcolor{gray}{Titel und Name} & \mytitle \myname \\
-\textcolor{gray}{Aktuelle Position} & \myposition \\
-\textcolor{gray}{Aktuelle Institution(en)} & \myinstitute \\
-\textcolor{gray}{Identifikatoren} & \myidentifier
+  \textbf{Titel und Name} & \mytitle \myname \\
+  \textbf{Aktuelle Position} & \myposition \\
+  \textbf{Aktuelle Institution(en)} & \myinstitute \\
+  \textbf{Identifikatoren} & \myidentifier
 \end{tabularx}
 
 
@@ -91,31 +91,31 @@ Additional information is available under \url{www.dfg.de/faq_cv}.}
 
 \noindent
 \begin{tabularx}{\textwidth}{@{}lX}
-\textcolor{gray}{Studium} & Fach, Zeitraum, Ort, Land \\
-\textcolor{gray}{Promotion} & Datum, Betreuer:innen, Fach, Einrichtung\\
-\textcolor{gray}{Stationen} & \emph{DFG: Für den Antrag relevante Tätigkeiten sind chronologisch (die aktuellste am Anfang) mit der Angabe von Zeitraum, Station/Position und Einrichtung zu nennen, wie z. B. Forschungsaufenthalte, Habilitation (Thema/Fach, Betreuende), Tätigkeiten an Hochschulen/außeruniversitären Einrichtungen, klinische Tätigkeit/Tätigkeit in der Versorgung von Patientinnen und Patienten, Erfahrungen und Qualifikationen in der Durchführung von klinischen Studien (Qualifikation als Prüferin, Prüfer oder Prüfungsteam-Mitglied sowie regulatorische und methodische Kenntnisse), Tätigkeit in der Industrieforschung, Tätigkeiten in anderen Berufsbranchen, Unternehmensgründungen, ehrenamtliche Tätigkeiten etc.}
+  \textbf{Studium} & Fach, Zeitraum, Ort, Land \\
+  \textbf{Promotion} & Datum, Betreuer:innen, Fach, Einrichtung\\
+  \textbf{Stationen} & \emph{DFG: Für den Antrag relevante Tätigkeiten sind chronologisch (die aktuellste am Anfang) mit der Angabe von Zeitraum, Station/Position und Einrichtung zu nennen, wie z. B. Forschungsaufenthalte, Habilitation (Thema/Fach, Betreuende), Tätigkeiten an Hochschulen/außeruniversitären Einrichtungen, klinische Tätigkeit/Tätigkeit in der Versorgung von Patientinnen und Patienten, Erfahrungen und Qualifikationen in der Durchführung von klinischen Studien (Qualifikation als Prüferin, Prüfer oder Prüfungsteam-Mitglied sowie regulatorische und methodische Kenntnisse), Tätigkeit in der Industrieforschung, Tätigkeiten in anderen Berufsbranchen, Unternehmensgründungen, ehrenamtliche Tätigkeiten etc.}
 \end{tabularx}
 
 \section*{Ergänzende Angaben zum Werdegang}
 
 \emph{DFG: Hier können Sie freiwillig ergänzende Informationen zu
-Ihrem Werdegang oder einer besonderen persönlichen Situation
-eintragen, sollten Sie den Eindruck haben, dass diese Angaben für
-die angemessene Begutachtung und Bewertung Ihrer wissenschaftlichen
-Leistung relevant sein können. Als solche Besonderheiten oder
-Verzögerungen können beispielsweise Ausfallzeiten aufgrund von
-Kinderbetreuungsaufgaben, Mutterschutz-, Eltern- oder
-Erziehungszeiten, chronischen/langfristigen Erkrankungen, einer
-Behinderung oder besonderen familiären Verpflichtungen, wie der
-Pflege von Angehörigen, sowie Pandemie-bedingten Ausfallzeiten
-berücksichtigt werden. Es können auch zeitliche Verzögerungen im
-wissenschaftlichen Werdegang, z. B. für Personen, die in erster
-Generation eine akademische Karriere anstreben (,,first generation
-academic''), aufgrund von verschiedenen Pflicht- und
-Freiwilligendiensten, Spracherwerb, Migration oder
-Integrationsphasen, Flucht oder Asylverfahren und Ähnliches genannt
-werden. Bitte nennen Sie keine oder so wenige Daten wie möglich von
-Dritten. }
+  Ihrem Werdegang oder einer besonderen persönlichen Situation
+  eintragen, sollten Sie den Eindruck haben, dass diese Angaben für
+  die angemessene Begutachtung und Bewertung Ihrer wissenschaftlichen
+  Leistung relevant sein können. Als solche Besonderheiten oder
+  Verzögerungen können beispielsweise Ausfallzeiten aufgrund von
+  Kinderbetreuungsaufgaben, Mutterschutz-, Eltern- oder
+  Erziehungszeiten, chronischen/langfristigen Erkrankungen, einer
+  Behinderung oder besonderen familiären Verpflichtungen, wie der
+  Pflege von Angehörigen, sowie Pandemie-bedingten Ausfallzeiten
+  berücksichtigt werden. Es können auch zeitliche Verzögerungen im
+  wissenschaftlichen Werdegang, z. B. für Personen, die in erster
+  Generation eine akademische Karriere anstreben (,,first generation
+  academic''), aufgrund von verschiedenen Pflicht- und
+  Freiwilligendiensten, Spracherwerb, Migration oder
+  Integrationsphasen, Flucht oder Asylverfahren und Ähnliches genannt
+  werden. Bitte nennen Sie keine oder so wenige Daten wie möglich von
+  Dritten. }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Engagement im Wissenschaftssystem}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,11 +123,11 @@ Dritten. }
 
 Freitext, optional
 \emph{Hier können Sie Angaben zu weiteren Tätigkeiten im
-Wissenschaftssystem machen. Dazu zählen beispielsweise
-Gremientätigkeiten, Tätigkeiten in der Selbstverwaltung der
-Wissenschaft, die Organisation wissenschaftlicher Veranstaltungen,
-Aktivitäten in der Lehre sowie Tätigkeiten als Mentorin
-bzw. Mentor.}
+  Wissenschaftssystem machen. Dazu zählen beispielsweise
+  Gremientätigkeiten, Tätigkeiten in der Selbstverwaltung der
+  Wissenschaft, die Organisation wissenschaftlicher Veranstaltungen,
+  Aktivitäten in der Lehre sowie Tätigkeiten als Mentorin
+  bzw. Mentor.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Betreuung von Forschenden in frühen Karrierephasen}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,25 +142,25 @@ Freitext, optional.
 \medskip
 
 \begin{itemize}
-\item \bibentry{thomas}
-\item \bibentry{raman}
+  \item \bibentry{thomas}
+  \item \bibentry{raman}
 \end{itemize}
 
 \medskip 
 
 \textbf{B: 10 sonstige Veröffentlichungen}
 
-\textcolor{gray}{\emph{DFG: optional, Freifeld, Preprints, Dinge ohne Peer Review, Patente, Blogposts, ...}}
+\emph{DFG: optional, Freifeld, Preprints, Dinge ohne Peer Review, Patente, Blogposts, ...}
 
 \begin{itemize}
-\item \bibentry{bernd}
+  \item \bibentry{bernd}
 \end{itemize}
 
 \section*{Anerkennung durch das Wissenschaftssystem}
 
 \emph{DFG: Hier können Sie Angaben zu Auszeichnungen oder Preisen
-machen. Dazu zählen auch Einladungen oder Berufungen in
-herausgehobenen Gremien oder Akademien.  }
+  machen. Dazu zählen auch Einladungen oder Berufungen in
+  herausgehobenen Gremien oder Akademien.  }
 
 \section*{Sonstige Angaben}
 
@@ -198,12 +198,13 @@ diesem CV ,,besondere Kategorien personenbezogener Daten'' Dritter
 übermittele, sichere ich zu, dass die insoweit erforderliche
 datenschutzrechtliche Legitimation besteht (z. B. durch eine
 Einwilligung).
+%
 Die Datenschutzhinweise zur Forschungsförderung der DFG, die ich unter
-\begin{verbatim}
-https://www.dfg.de/service/datenschutz
-\end{verbatim}
+\href{https://www.dfg.de/service/datenschutz}{https://www.dfg.de/service/datenschutz}
 abrufen kann, habe ich
 zur Kenntnis genommen und leite diese an solche Personen weiter, deren
 Daten die DFG verarbeitet, weil sie in diesem CV aufgeführt sind.
 
-\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
