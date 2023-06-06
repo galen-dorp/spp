@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%% Laura Voggesberger %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt]{article}
+\documentclass[a4paper,11pt]{article}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -13,119 +13,11 @@
 \usepackage{xcolor}
 \definecolor{darkblue}{RGB}{0,0,160}
 \usepackage{hyperref}
-\hypersetup{
-%    bookmarks=false,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat\u2019s bookmarks
-    pdftoolbar=true,        % show Acrobat\u2019s toolbar?
-    pdfmenubar=true,        % show Acrobat\u2019s menu?
-    pdffitwindow=false,      % page fit to window when opened
-    pdfnewwindow=true,      % links in new window
-    pdfkeywords={}, % list of keywords
-    colorlinks=true,        % false: boxed links; true: colored links
-    linkcolor=darkblue,          % color of internal links
-    citecolor=darkblue,        % color of links to bibliography
-    filecolor=black,      % color of file links
-    urlcolor=darkblue    
-}
 \usepackage{helvet}  %% DFG wünscht sich eigentlich Arial
 \usepackage{url}
 \usepackage[ngerman]{babel}
 \usepackage{tabularx}
-
-% Bibliography
-\usepackage[
-defernumbers=true,
-firstinits=true,
-maxnames=6,
-sorting=ydnt,  % Nach Jahr absteigend, dann Name und Titel
-doi=false,
-url=false,
-isbn=false,
-]{biblatex}
-\addbibresource{../bib/alle.bib}
-\renewbibmacro{in:}{}
-% Remove strange things from bibtex entries
-\AtEveryBibitem{% Clean up the bibtex rather than editing it
- \clearlist{address}
- \clearfield{date}
- \clearfield{eprint}
-% \clearfield{isbn}
-% \clearfield{issn}
- \clearlist{location}
- \clearfield{month}
-% \clearfield{series}
- \clearlist{language}
- \clearname{editor}
- \clearfield{pages}
- \clearfield{number}
- \clearfield{volume}
-
- \ifentrytype{book}{}{% Remove publisher and editor except for books
-  \clearlist{publisher}
- }
-}
-% If there is a DOI, don't print a URL.
-% We use source mappings for this
-% Modified from here: https://tex.stackexchange.com/questions/154864/biblatex-use-doi-only-if-there-is-no-url
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map{
-      \step[fieldsource=doi,final]
-      \step[fieldset=url,null]
-    }
-  }
-}
-
-% Make the title a clickable link to the DOI, URL, or ISBN.
-\newbibmacro{string+doiurlisbn}[1]{%
-  \iffieldundef{doi}{%
-    \iffieldundef{url}{%
-      \iffieldundef{isbn}{%
-        \iffieldundef{issn}{%
-          #1%
-        }{%
-          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
-        }%
-      }{%
-        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
-      }%
-    }{%
-      \href{\thefield{url}}{#1}%
-    }%
-  }{%
-    \href{http://dx.doi.org/\thefield{doi}}{#1}%
-  }%
-}
-
-% Italic titles plain
-% \DeclareFieldFormat
-%   [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
-%   {title}{\textit{#1}\isdot}
-% Titles in italic (clickable)
-\DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
-\DeclareFieldFormat[article,incollection,inproceedings,thesis,phdthesis]{title}%
-{\usebibmacro{string+doiurlisbn}{#1}}
-
-\renewbibmacro*{volume+number+eid}{%
-  \bfseries
-  \printfield{volume}%
-  \mdseries
-%  \setunit*{\adddot}% DELETED
-  \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
-  \printfield{number}%
-  \setunit{\addcomma\space}%
-  \printfield{eid}}
-\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
-
-% Deacrease space between references in bibliography;
-\newcommand{\myrefsep}{.1ex}
-\setlength\bibitemsep{\myrefsep}
-\setlength\bibnamesep{\myrefsep}
-\setlength\bibinitsep{\myrefsep}
-
-%% Kein "und" vor dem letzten Autor*in
-\renewcommand{\finalnamedelim}{\addcomma\space}
-
+\usepackage{bibentry}
 
 \usepackage[utf8]{inputenc}
 \usepackage[
@@ -176,7 +68,12 @@ centering
 \vspace{-9ex}
 
 \centerline{\Large \bf Curriculum Vitae \myname}
-
+\emph{DFG: Your academic curriculum vitae serves to present your personal profile. It helps DFG’s reviewers and committees in conducting their review and evaluation of your academic achievements and qualifications. The DFG Head Office refers to the curriculum vitae to check you are eligible to apply as well as to see whether there may be any conflicts of interests on the part of reviewers and committee members. All the following details are required unless anything is stated specifically to the contrary.
+In terms of providing concrete evidence of proposal-specific or topic-specific qualifications, please refer to the section on own "preliminary work” in the proposal document.
+The CV must not exceed four pages. Please make sure to retain the template formatting. In particular, the font should not be smaller than Arial 11 point, with line spacing no less than 1.2. A photograph must not be attached to the curriculum vitae. Please 
+name the document CV\_PubList\_$\langle$ person’s last name$\rangle$.
+The text in grey or red font provides you with information when preparing your CV. Please remove these texts completely after filling in the CV.
+Additional information is available under \url{www.dfg.de/faq_cv}.}
 \section*{Persönliche Daten}
 
 \noindent
@@ -240,21 +137,21 @@ Freitext, optional.
 
 \textbf{A: 10 ausgewählte Publikationen}
 
-\begin{thebibliography}{10}
+\nobibliography{bibliography}
+\bibliographystyle{unsrt}
 
-\bibitem{humphreys}
-James~E. Humphreys.
-\newblock {\em Reflection {G}roups and {C}oxeter {G}roups}, volume~29 of {\em
-  Cambridge Studies in Advanced Mathematics}.
-\newblock Cambridge University Press, Cambridge, 1990.% 1,
-
-\end{thebibliography}
-
-\printbibliography[heading=none]
+\begin{enumerate}
+  \item \bibentry{thomas}
+  \item \bibentry{raman}
+\end{enumerate}
 
 \textbf{B: 10 sonstige Veröffentlichungen}
 
 \emph{DFG: optional, Freifeld, Preprints, Dinge ohne Peer Review, Patente, Blogposts, ...}
+
+\begin{enumerate}
+  \item \bibentry{bernd}
+\end{enumerate}
 
 \section*{Anerkennung durch das Wissenschaftssystem}
 
@@ -264,7 +161,7 @@ James~E. Humphreys.
 
 \section*{Sonstige Angaben}
 
-\emph{Hier können Sie auf weitere Punkte zur Charakterisierung Ihrer Person als Wissenschaftlerin bzw. Wissenschaftler oder auf andere Aspekte, wie beispielsweise eine Dual-Career-Thematik (die z.  B. die Standortwahl bedingt), hinweisen, die aus Ihrer Sicht relevant für die Begutachtung oder Bewertung des Antrags sind.}
+\emph{Hier können Sie auf weitere Punkte zur Charakterisierung Ihrer Person als Wissenschaftlerin bzw. Wissenschaftler oder auf andere Aspekte, wie beispielsweise eine Dual-Career-Thematik (die z.  B. die Standortwahl bedingt), hinweisen, die aus Ihrer Sicht relevant für die Begutachtung oder Bewertung des Antrags sind.}
 
 \section*{Datenschutz und Einwilligung in die Verarbeitung optionaler Angaben}
 \footnotesize
@@ -306,8 +203,3 @@ Daten die DFG verarbeitet, weil sie in diesem CV aufgeführt sind.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
