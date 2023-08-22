@@ -25,10 +25,17 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{xcolor}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
 
 \def\fix#1{{\bf FIXME:} #1 \\}
 \def\Dfn#1{\emph{#1}}
 \def\part#1{\noindent{\bf #1}\\[5pt]}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Note that for the SPP we have the following: 
 %
@@ -189,30 +196,29 @@ Explain each item for each applicant (stating last name, first name).
 
 \subsubsection{Direct Project Costs}
 
-\noindent 5.1.2.1	Equipment up to € 10,000, Software and Consumables
+\paragraph{Equipment up to € 10,000, Software and Consumables}
 
 \noindent\textcolor{red}{[Text]}
 
-\noindent 5.1.2.2	Travel Expenses
+\paragraph{Travel Expenses}
 
 \noindent\textcolor{red}{[Text]}
 
-\noindent 5.1.2.3	Visiting Researchers (excluding Mercator Fellows)
+\paragraph{Visiting Researchers (excluding Mercator Fellows)}
 
 \noindent\textcolor{red}{[Text]}
 
-\noindent 5.1.2.4	Expenses for Laboratory Animals
+% \paragraph{Expenses for Laboratory Animals}
+
+% \noindent\textcolor{red}{[Text]}
+
+\paragraph{Other Costs}
 
 \noindent\textcolor{red}{[Text]}
 
-\noindent 5.1.2.5	Other Costs
+\paragraph{Project-related Publication Expenses}
 
 \noindent\textcolor{red}{[Text]}
-
-\noindent 5.1.2.6	Project-related Publication Expenses
-
-\noindent\textcolor{red}{[Text]}
-
 
 \subsubsection{Instrumentation}
 
